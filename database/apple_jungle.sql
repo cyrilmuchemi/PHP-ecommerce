@@ -3,11 +3,14 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+--
+
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 CREATE TABLE `product` (
   `item_id` int(11) NOT NULL,
@@ -17,6 +20,8 @@ CREATE TABLE `product` (
   `item_image` varchar(255) NOT NULL,
   `item_register` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 INSERT INTO `product` (`item_id`, `item_brand`, `item_name`, `item_price`, `item_image`, `item_register`) VALUES
 (1, 'Samsung', 'Samsung Galaxy 10', 152.00, './assets/products/1.png', '2020-03-28 11:08:57'), -- NOW()
@@ -40,9 +45,12 @@ CREATE TABLE `user` (
   `register_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `register_date`) VALUES
-(1, 'Cyril', 'Muchemi', '2023-07-04 17:37:17'),
-(2, 'Vue', 'Artisan', '2023-07-04 17:47:22');
+(1, 'Cyril', 'Muchemi', '2020-03-28 13:07:17'),
+(2, 'Vue', 'Artisan', '2020-03-28 13:07:17');
+
+
 
 CREATE TABLE `wishlist` (
   `cart_id` int(11) NOT NULL,
@@ -62,9 +70,12 @@ ALTER TABLE `user`
 ALTER TABLE `cart`
   MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
+
 ALTER TABLE `product`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 
 ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
