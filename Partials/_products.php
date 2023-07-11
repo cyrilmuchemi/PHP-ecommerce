@@ -1,8 +1,13 @@
+<?php
+  $item_id = $_GET['item_id'] ?? 1;
+  foreach($product->getData() as $item) :
+    if($item['item_id']==$item_id):
+?>
 <section id="product" class="py-3">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="./assets/products/1.png" alt="product" class="img-fluid"/>
+                    <img src="<?php echo $item['item_image'] ?>" alt="product" class="img-fluid"/>
                     <div class="row pt-4 font-size-16 font-roboto">
                         <div class="col">
                             <button type="submit" class="btn btn-danger form-control">Proceed to Payment</button>
@@ -13,8 +18,8 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <h5 class="font-open font-size-20">Samsung Galaxy 10</h5>
-                    <small>By Samsung</small>
+                    <h5 class="font-open font-size-20"><?php echo $item['item_name'] ?? "Unknown"; ?></h5>
+                    <small>By <?php echo $item['item_brand'] ?? 'Brand' ?></small>
                     <div class="d-flex">
                         <div class="rating text-warning font-size-12">
                             <span><i class="fas fa-star"></i></span>
@@ -28,16 +33,12 @@
                     <hr class="m-0"/>
                     <table class="my-3">
                         <tr class="font-roboto font-size-14">
-                            <td>Previous Price</td>
-                            <td><strike>KSh 20,000</strike></td>
+                            <td>Previous Price:</td>
+                            <td><strike>$162.00</strike></td>
                         </tr>
                         <tr class="font-roboto font-size-14">
-                            <td>New Price</td>
-                            <td class="font-size-20 text-danger"><span>Ksh 18,000</span><small class="text-dark font-size-12">&nbsp;&nbsp; VAT included</small></td>
-                        </tr>
-                        <tr class="font-roboto font-size-14">
-                            <td>You Save</td>
-                            <td><span class="font-size-16 text-danger">Ksh 2,000</span></td>
+                            <td>Deal Price:</td>
+                            <td class="font-size-20 text-danger">$<span><?php echo $item['item_price'] ?? 0 ?></span><small class="text-dark font-size-12">&nbsp;&nbsp; VAT included</small></td>
                         </tr>
                     </table>
                     <div id="policy">
@@ -121,4 +122,8 @@
                 </div>
             </div>
         </div>
-       </section> 
+</section> 
+<?php
+  endif;
+  endforeach;
+?>
