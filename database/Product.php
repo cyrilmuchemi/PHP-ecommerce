@@ -22,4 +22,21 @@ class Product
 
     return $resultArray;
   }
+
+  //get product using item id
+  public function getProducts($item_id = null, $table = 'product'){
+    if(isset($item_id)){
+      $result = $this->db->con->query("SELECT * FROM {$table} WHERE item_id = {$item_id}");
+    }
+
+    $resultArray = array();
+    
+    //fetch product data one by one
+    while($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+        $resultArray[] = $item;
+    }
+
+    return $resultArray;
+
+  }
 }
