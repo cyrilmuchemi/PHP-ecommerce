@@ -1,7 +1,15 @@
 <?php
+  shuffle($product_shuffle);
+ if($_SERVER['REQUEST_METHOD'] == 'POST'){
+   if(isset($_POST['product_submit'])){
+     $cart->addToCart($_POST['user_id'], $_POST['item_id']);
+   }
+ }
+?>
+<?php
   $item_id = $_GET['item_id'] ?? 1;
   foreach($product->getData() as $item) :
-    if($item['item_id']==$item_id):
+    if($item['item_id'] == $item_id):
 ?>
 <section id="product" class="py-3">
         <div class="container">
@@ -13,7 +21,17 @@
                             <button type="submit" class="btn btn-danger form-control">Proceed to Payment</button>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>
+                        <form method="post">
+                        <input type="hidden" name="item_id" value="<?php echo $item["item_id"];?>"/>
+                        <input type="hidden" name="user_id" value="<?php echo '1';?>"/>
+                        <?php 
+                          if (in_array($item['item_id'], $cart->getCartId($product->getData('cart')) ?? [])) {
+                           echo '<button type="submit" disabled class="btn btn-success form-control font-size-16">In the Cart</button>';
+                          } else {
+                            echo '<button type="submit" name="product_submit" class="btn btn-warning form-control font-size-16">Add to Cart</button>';
+                          }
+                        ?>
+                        </form>
                         </div>
                     </div>
                 </div>

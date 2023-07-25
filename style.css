@@ -53,6 +53,14 @@ button, button:focus {
   background: #ffd289;
 }
 
+.color-purple {
+  color: #800080;
+}
+
+.color-purple-bg {
+  background: #800080;
+}
+
 #top-sale .owl-carousel .item .product a {
   overflow: hidden;
 }

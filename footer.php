@@ -5,7 +5,7 @@
           <div class="col-lg-3 col-12">
             <h4 class="font-open font-size-20">Apple Jungle</h4>
             <p class="font-size-20 font-roboto text-white-50">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error necessitatibus id adipisci? Ipsam voluptatum eos debitis possimus totam placeat! Similique!
+            Join the adventure in Mobile Jungle, where technology meets the untamed allure of the wild. Unleash the power of connectivity, right at your fingertips!
             </p>
           </div>
           <div class="col-lg-4 col-12">
@@ -15,7 +15,7 @@
                 <input type="text" class="form-control" placeholder="Email">
               </div>
               <div class="col">
-               <button type="submit" class="btn btn-primary mb-2">Subscribe</button> 
+               <button type="submit" class="btn mt-3 btn-primary mb-2">Subscribe</button> 
               </div>
             </form>
           </div>
