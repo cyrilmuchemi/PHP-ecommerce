@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 class Cart
 {
     public $db = null;
@@ -66,6 +69,21 @@ class Cart
                 return $value[$key];
             }, $cartArray);
             return $cart_id;
+        }
+    }
+
+    public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = 'cart'){
+        if($item_id != null){
+            $query1 = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id ={$item_id}";
+            $query2 = "DELETE FROM {$fromTable} WHERE item_id={$item_id}";
+
+            $result1 = $this->db->con->query($query1);
+            $result2 = $this->db->con->query($query2);
+
+            if ($result1 && $result2) {
+                header("Location: " . $_SERVER["PHP_SELF"]);
+                exit;
+            } 
         }
     }
 }

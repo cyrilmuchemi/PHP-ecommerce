@@ -5,6 +5,7 @@
 
 <?php
     include("Partials/_cart.php"); 
+    include("Partials/_wishlist.php"); 
     include("Partials/_new-phones.php"); 
 ?>
 
